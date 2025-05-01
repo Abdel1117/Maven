@@ -27,16 +27,24 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            emailext body: 'Job accompli avec succès',
-                     subject: 'Job accompli avec succès',
-                     to: 'abderahmane.adjali@live.fr'
-        }
-        failure {
-            emailext body: 'Job échoué',
-                     subject: 'Job échoué',
-                     to: 'abderahmane.adjali@live.fr'
+   post {
+    success {
+        script {
+            emailext(
+                body: 'Job accompli avec succès',
+                subject: 'Job accompli avec succès',
+                to: 'abderahmane.adjali@live.fr'
+            )
         }
     }
+    failure {
+        script {
+            emailext(
+                body: 'Job échoué',
+                subject: 'Job échoué',
+                to: 'abderahmane.adjali@live.fr'
+            )
+        }
+    }
+}
 }
